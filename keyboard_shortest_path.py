@@ -11,11 +11,11 @@ For example, a 3 x 9 "keyboard" would look like this:
 
 In this case, the word 'zebra' would consist of the following indicies:
 
-[(2, 7), (0, 4), (0, 1), (1, 8), (0, 0)]
+ [(2, 7), (0, 4), (0, 1), (1, 8), (0, 0)]
 
 The shortest path for this word, starting a the letter 'a' is:
 
-[(-1, -2), (1, -3), (0, -3), (1, -2), (-1, 1)]
+ [(-1, -2), (1, -3), (0, -3), (1, -2), (-1, 1)]
 
 Where negative represents up or left.
 
@@ -76,7 +76,6 @@ def commands_to_word(n_rows, n_columns, commands):
         h += c[1]
         h = h % n_columns
         indicies.append((v, h))
-    #print indicies
     word = ""
     for i in indicies:
         word += keyboard[i[0]][i[1]]
@@ -88,8 +87,8 @@ def shortest_path(n_rows, n_columns, string):
     y path for each letter"""
     key_map = make_keymap(n_rows, n_columns)
     commands = []
-    print string
-    string = 'a' + string #start at the letter 'a' (0, 0)
+    #start at the letter 'a' (0, 0)
+    string = 'a' + string
     for i in range(1, len(string)):
         c1 = string[i - 1]
         c2 = string[i]
@@ -135,7 +134,7 @@ def direction2(pos1, pos2, nPos):
 if __name__ == "__main__":
     rows = 3
     columns = 9
-    word = 'xylophone'
+    word = 'python'
     commands = shortest_path(rows, columns, word)
     keyboard_word = commands_to_word(rows, columns, commands)
     print word
