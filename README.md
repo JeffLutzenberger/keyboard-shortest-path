@@ -25,5 +25,5 @@ So, `(-1, -2)` means move 1 row up and 2 columns to the left or:
 ~~~
 up, left, left
 ~~~ 
-which moves the cursor from the letter `a` at (0, 0) to the letter `z` at (2, 7).
+which moves the cursor from the letter `a` at `(0, 0)` to the letter `z` at `(2, 7)`.
 
