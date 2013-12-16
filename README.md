@@ -21,7 +21,7 @@ The shortest path for this word, starting at the letter `a` is:
 ~~~
 where negative represents up or left and positive represents down or right.
 
-So, (-1, -2) means move 1 row up and 2 columns to the left or:
+So, `(-1, -2)` means move 1 row up and 2 columns to the left or:
 ~~~
 up, left, left
 ~~~ 
