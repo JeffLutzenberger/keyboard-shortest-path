@@ -98,14 +98,14 @@ def shortest_path(n_rows, n_columns, string):
     for i in range(1, len(string)):
         c1 = string[i - 1]
         c2 = string[i]
-        vertical = direction(key_map[c1][0], key_map[c2][0], n_rows)
-        horizontal = direction(key_map[c1][1], key_map[c2][1], n_columns)
+        vertical = distance(key_map[c1][0], key_map[c2][0], n_rows)
+        horizontal = distance(key_map[c1][1], key_map[c2][1], n_columns)
         commands.append((vertical, horizontal))
 
     return commands
 
 
-def direction(pos1, pos2, nPos):
+def distance(pos1, pos2, nPos):
     """
     gets the shortest distance between 2 indices in an array accounting
     for wrapping
