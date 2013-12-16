@@ -1,4 +1,4 @@
-Keyboard Shortest Path Code
+Keyboard Shortest Path in Python
 ======================
 
 Given all letters in the english alphabet organized alphabetically
