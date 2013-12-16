@@ -11,7 +11,7 @@ For example, a 3 x 9 "keyboard" would look like this:
  j k l m n o p q r
  s t u v w x y z
 ~~~
-In this case, the word `zebra` is comprised of the following indicies:
+In this case, the word `zebra` is comprised of the following indices:
 ~~~
 [(2, 7), (0, 4), (0, 1), (1, 8), (0, 0)]
 ~~~

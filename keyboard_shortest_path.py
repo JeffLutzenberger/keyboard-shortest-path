@@ -9,7 +9,7 @@ For example, a 3 x 9 "keyboard" would look like this:
  j k l m n o p q r
  s t u v w x y z
 
-In this case, the word 'zebra' would consist of the following indicies:
+In this case, the word 'zebra' would consist of the following indices:
 
  [(2, 7), (0, 4), (0, 1), (1, 8), (0, 0)]
 
@@ -41,7 +41,7 @@ def make_keyboard(n_rows, n_columns):
 
 def print_keyboard(keyboard):
     """
-    Print keyboard to the screen.
+    Print keyboard nicely to the screen.
     """
     for i in range(len(keyboard)):
         row = ""
@@ -66,25 +66,31 @@ def make_keymap(n_rows, n_columns):
 
 
 def commands_to_word(n_rows, n_columns, commands):
+    """
+    given a list of commands and the dimensions of a keyboard convert the
+    commands to letters. assumes we start at the letter 'a' (0, 0)
+    """
     keyboard = make_keyboard(n_rows, n_columns)
     v = 0
     h = 0
-    indicies = []
+    indices = []
     for c in commands:
         v += c[0]
         v = v % n_rows
         h += c[1]
         h = h % n_columns
-        indicies.append((v, h))
+        indices.append((v, h))
     word = ""
-    for i in indicies:
+    for i in indices:
         word += keyboard[i[0]][i[1]]
     return word
 
 
 def shortest_path(n_rows, n_columns, string):
-    """for each character in the string calculate the shortest x and
-    y path for each letter"""
+    """
+    for each character in the string calculate the shortest x and
+    y path for each letter
+    """
     key_map = make_keymap(n_rows, n_columns)
     commands = []
     #start at the letter 'a' (0, 0)
@@ -100,35 +106,16 @@ def shortest_path(n_rows, n_columns, string):
 
 
 def direction(pos1, pos2, nPos):
-    if pos2 > pos1:
-        res1 = pos2 - pos1
-        res2 = pos1 + nPos - pos2
-        if res2 < res1:
-            return -res2
-        else:
-            return res1
+    """
+    gets the shortest distance between 2 indices in an array accounting
+    for wrapping
+    """
+    res1 = (pos2 - pos1) % nPos
+    res2 = (pos1 - pos2) % nPos
+    if res1 < res2:
+        return res1
     else:
-        res1 = pos1 - pos2
-        res2 = pos2 + nPos - pos1
-        if res2 < res1:
-            return res2
-        else:
-            return -res1
-
-
-def direction2(pos1, pos2, nPos):
-    """alternate implementation"""
-    p1 = pos1
-    p2 = pos2
-    sign = 1
-    if pos2 < pos1:
-        sign = -1
-    res1 = sign * (p2 - p1)
-    res2 = sign * (p1 - p2) + nPos
-    if res2 < res1:
-        return -sign * res2
-    else:
-        return sign * res1
+        return -res2
 
 
 if __name__ == "__main__":
